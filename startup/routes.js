@@ -1,5 +1,5 @@
 const express = require('express');
-const items = require('../routes/items');
+const posts = require('../routes/posts');
 const home = require('../routes/home');
 const users = require('../routes/users');
 const error = require('../middleware/error');
@@ -14,7 +14,7 @@ module.exports = function (app) {
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
     });
-    app.use('/users/items',items);
+    app.use('/users/posts',posts);
     app.use('/',home);
     app.use('/users',users);
     app.use(error);

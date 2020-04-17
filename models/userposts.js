@@ -1,23 +1,23 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const userItemSchema = new mongoose.Schema({
+const userPostSchema = new mongoose.Schema({
     userId: {type:String,required:true},
-    item: {type:String,required:true},
+    post: {type:String,required:true},
     date : {type:Date,default:Date.now},
     isCompleted: {type:Boolean,default:false}
 });
-const UserItem = mongoose.model('userItems',userItemSchema);
+const UserPost = mongoose.model('userPosts',userPostSchema);
 
-function validItem(data){
+function validPost(data){
     const schema = {
         //userId:Joi.string().min(24).max(24).required(),
-        item:Joi.string().required()
+        post:Joi.string().required()
     }
     return Joi.validate(data,schema);
 }
 
 module.exports = {
-    UserItem,
-    validItem
+    UserPost,
+    validPost
 }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const winston = require('winston');
-const DB_URL = 'mongodb+srv://anirudh:rj13sl1608@cluster0-lcda6.mongodb.net/keeps?retryWrites=true&w=majority';
+const DB_URL = 'mongodb+srv://anirudh:rj13sl1608@cluster0-lcda6.mongodb.net/BlogPost?retryWrites=true&w=majority';
 
 module.exports = function(){
     mongoose.connect(DB_URL)

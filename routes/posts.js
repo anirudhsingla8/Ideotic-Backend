@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 //const asyncMiddleware = require('../middleware/async');
 const {User} = require('../models/user');
-const {UserItem,validItem} = require('../models/useritems')
+const {UserPost,validPost} = require('../models/userposts')
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin')
 
 router.get('/:id?',auth,async (req,res) => {
     try{
-        const result = await UserItem.find({userId:req.params.id})
+        const result = await UserPost.find({userId:req.params.id})
         if(result.length) {
             res.status(200).send(result)
         }
@@ -20,24 +20,24 @@ router.get('/:id?',auth,async (req,res) => {
 });
 
 router.post('/add',auth,async (req,res) => {
-    const result = validItem(req.body);
+    const result = validPost(req.body);
     if(result.error){
         res.status(400).send(result.error.details[0].message);
         return;
     }
     else{
-        const userItem = new UserItem({
+        const userPost = new UserPost({
             userId: req.user._id,
-            item: req.body.item
+            post: req.body.post
         })
 
-        userItem.save()
+        userPost.save()
             .then(()=> res.status(200).send('record successfully added'))
             .catch(err => res.status(400).send('err.message'))
         // try{
         //     const result = await User.findOne({_id:req.body.userId})
         //     if(result) {
-        //     await userItem.save()
+        //     await userPost.save()
         //     res.status(200).send("record successfully added")
         //     }
         //     else res.send("no user found with this ID")
@@ -49,17 +49,17 @@ router.post('/add',auth,async (req,res) => {
 });
 
 router.put('/update/:id',auth,async (req,res)=>{
-    const result = validItem(req.body);
+    const result = validPost(req.body);
     if(result.error){
         res.status(400).send(result.error.details[0].message);
         return;
     }
     else{
-        const userItem = await UserItem.findOne({_id:req.params.id})
+        const userPost = await UserPost.findOne({_id:req.params.id})
         try{
-            if (userItem.userId==req.body.userId){
-                userItem.item = req.body.item
-                await userItem.save()
+            if (userPost.userId==req.body.userId){
+                userPost.post = req.body.post
+                await userPost.save()
                 res.status(200).send('record successfully updated')
             }else{
                 res.send('sorry you are not authorised to update this record');
@@ -67,21 +67,21 @@ router.put('/update/:id',auth,async (req,res)=>{
         }catch (error) {
             res.status(400).send(error.message)
         }
-        res.send(userItem);
+        res.send(userPost);
     }
 });
 
 router.delete('/delete/:id',[auth,admin],async (req,res)=>{
-    const result = validItem(req.body);
+    const result = validPost(req.body);
     if(result.error){
         res.status(400).send(result.error.details[0].message);
         return;
     }
     else{
-        const userItem = await UserItem.findOne({_id:req.params.id})
+        const userPost = await UserPost.findOne({_id:req.params.id})
         try{
-            if (userItem.userId==req.body.userId){
-                await userItem.deleteOne()
+            if (userPost.userId==req.body.userId){
+                await userPost.deleteOne()
                 res.status(200).send('record successfully deleted')
             }else{
                 res.send('sorry you are not authorised to delete this record')
@@ -89,10 +89,10 @@ router.delete('/delete/:id',[auth,admin],async (req,res)=>{
         }catch (error) {
             res.status(400).send(error.message)
         }
-        res.send(userItem)
+        res.send(userPost)
     }
     // try{
-    //     const result = await UserItem.findOne({_id:req.params.id})
+    //     const result = await UserPost.findOne({_id:req.params.id})
     //     res.status(200).send(req.body.userId)
     // }catch (error) {
     //     res.status(400).send(error.message)

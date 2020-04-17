@@ -2,27 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa9eacf7-1120-4e5a-9398-689142513d4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/custom-environment-variables.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logfile.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/async.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startup/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startup/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startup/logging.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startup/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uncaughtExceptions.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/production.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hash.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/useritems.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/useritems.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/custom-environment-variables.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/custom-environment-variables.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/useritems.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/userposts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/startup/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/startup/db.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +96,7 @@
       <workItem from="1586860103377" duration="11141000" />
       <workItem from="1587019292409" duration="9441000" />
       <workItem from="1587104561708" duration="11918000" />
+      <workItem from="1587125869360" duration="3021000" />
     </task>
     <servers />
   </component>
