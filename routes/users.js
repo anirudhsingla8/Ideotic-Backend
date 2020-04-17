@@ -10,8 +10,8 @@ const router = express.Router();
 const {User,register_validation,login_validation} = require('../models/user');
 
 
-router.get('/',[auth,admin],async (req,res) => {
-    throw new Error('could not fetch the users');
+router.get('/',async (req,res) => {
+    //throw new Error('could not fetch the users');
     const users = await User.find().sort('email');
     res.send(users);
 });

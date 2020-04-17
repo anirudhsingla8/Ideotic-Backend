@@ -19,6 +19,30 @@ router.get('/:id?',auth,async (req,res) => {
     }
 });
 
+router.put('/comment',auth,async (req,res) => {
+    const post_id = req.body.post_id;
+    const post = await UserPost.findOne({_id:post_id})
+    post.updateOne(
+        {
+            '$push':{'comments':req.body.comment}
+        })
+        .then(() => res.status(200).send('successfully updated'))
+        .catch(err => res.status(400).send('error occurred'));
+})
+
+router.put('/like',auth,async (req,res)=>{
+    const post_id = req.body.post_id;
+    const post = await UserPost.findOne({_id:post_id})
+    post.updateOne(
+        {
+            '$addToSet':{'like_array':req.user._id}
+            //'$set':{'like':post.like_array.length}
+        })
+        .then(() => res.status(200).send('successfully updated'))
+        .catch(err => res.status(400).send('error occurred'));
+
+});
+
 router.post('/add',auth,async (req,res) => {
     const result = validPost(req.body);
     if(result.error){

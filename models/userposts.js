@@ -5,6 +5,9 @@ const userPostSchema = new mongoose.Schema({
     userId: {type:String,required:true},
     post: {type:String,required:true},
     date : {type:Date,default:Date.now},
+    like : {type:Number,default:0},
+    like_array : [String],
+    comments : [String],
     isCompleted: {type:Boolean,default:false}
 });
 const UserPost = mongoose.model('userPosts',userPostSchema);
