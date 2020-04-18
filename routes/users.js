@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const router = express.Router();
+const localStorage = require('localStorage');
 const {User,register_validation,login_validation} = require('../models/user');
 
 
@@ -34,8 +35,6 @@ router.post('/register',async (req,res) => {
     //     email: req.body.email,
     //     password: req.body.password
     // });
-
-
     user.save()
         .then(user => {
             const token = user.generateAuthToken();
@@ -57,18 +56,8 @@ router.post('/login',async (req,res) => {
     if (!validPassword) res.status(400).send('Invalid email or password');
 
     const token = user.generateAuthToken();
+    localStorage.setItem('x-auth-token',token);
     res.header('x-auth-token',token).send(token);
-    // try{
-    //          const users = await User.find({
-    //              email: req.body.email,
-    //          });
-    //          if (users[0] && users[0].password==req.body.password) res.send(users[0])
-    //          else if(users[0] && users[0].password!=req.body.password) res.send("Please enter correct password")
-    //          else res.send("User does not exist, Please register")
-    //      }catch (error) {
-    //          res.send(error.message);
-    //      }
-
 })
 
 module.exports = router;

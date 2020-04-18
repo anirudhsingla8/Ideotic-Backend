@@ -6,6 +6,20 @@ const {UserPost,validPost} = require('../models/userposts')
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin')
 
+router.get('/',auth,async (req,res) => {
+    try{
+        const result = await UserPost.find({})
+        if(result.length) {
+            res.status(200).send(result)
+        }
+        else res.send("Currently no post to display")
+    }
+    catch(error){
+        console.log('error', error)
+        res.status(400).send(error.message)
+    }
+});
+
 router.get('/:id?',auth,async (req,res) => {
     try{
         const result = await UserPost.find({userId:req.params.id})
