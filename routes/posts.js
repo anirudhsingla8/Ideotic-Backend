@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 //const asyncMiddleware = require('../middleware/async');
 const {User} = require('../models/user');
-const {UserPost,validPost} = require('../models/userposts')
+const {UserPost,validPost} = require('../models/userposts');
 const auth = require('../middleware/auth');
-const admin = require('../middleware/admin')
+const admin = require('../middleware/admin');
 
-router.get('/',auth,async (req,res) => {
+router.get('/',async (req,res) => {
     try{
         const result = await UserPost.find({})
         if(result.length) {
@@ -44,7 +44,7 @@ router.put('/comment',auth,async (req,res) => {
         .catch(err => res.status(400).send('error occurred'));
 })
 
-router.put('/like',auth,async (req,res)=>{
+router.put('/like',async (req,res)=>{
     const post_id = req.body.post_id;
     const post = await UserPost.findOne({_id:post_id})
     post.updateOne(
@@ -66,6 +66,7 @@ router.post('/add',auth,async (req,res) => {
     else{
         const userPost = new UserPost({
             userId: req.user._id,
+            username: req.user.username,
             post: req.body.post
         })
 

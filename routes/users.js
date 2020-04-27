@@ -57,7 +57,7 @@ router.post('/login',async (req,res) => {
 
     const token = user.generateAuthToken();
     localStorage.setItem('x-auth-token',token);
-    res.header('x-auth-token',token).send(token);
+    res.header('x-auth-token',token).send([token,user._id,user.firstname+' '+user.lastname]);
 })
 
 module.exports = router;
